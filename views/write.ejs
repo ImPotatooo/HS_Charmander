@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <title>Write Page</title>
+
+  <style>
+        /* 기존 스타일 그대로 유지 */
+        .container-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 2.5%;
+    }
+
+    #map-container {
+      width: 80%;
+      margin-right: 2.5%;
+    }
+
+    .main-container {
+      width: 30%;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #map {
+      width: 100%;
+      height: 800px;
+    }
+
+    .controls {
+      margin-top: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .system-info {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    fieldset {
+      border: 4px solid #DDA0DD;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    legend {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    iframe {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .btn-toggle {
+      margin: 50px;
+      color: white !important;
+      flex: 1;
+      min-width: 200px;
+      max-width: 300px;
+      min-height: 50px;
+      max-height: 150px;
+      border-radius: 15px;
+    }
+
+    .custom-pagination {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .pagination .page-item.active .page-link {
+      background-color: lightgray;
+      border-color: gray;
+      color: red;
+    }
+  
+    .pagination .page-link {
+      color: red;
+    }
+  
+    .pagination .page-link:hover {
+      background-color: #B0E2FF;
+      border-color: lightgray;
+    }
+
+    .iframe-container {
+      position: fixed;
+      top: 20px;
+      right: 10px;
+      width: 45%;
+      height: calc(100% - 40px);
+      overflow: auto;
+      background-color: white;
+      border: 4px solid #DDA0DD;
+      padding: 20px;
+      display: none;
+    }
+
+    .footer {
+      background-color: lightgray;
+      padding: 20px 0;
+      text-align: center;
+      border-top: 1px solid #e7e7e7;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      margin-top: 50px;
+    }
+
+    .custom-close {
+    background-color: gray;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    opacity: 1;
+  }
+
+  .custom-close:hover,
+  .custom-close:focus {
+    background-color: darkgray;
+  }
+
+  .custom-close span {
+    display: block;
+    line-height: 1;
+  }
+  </style>
+
+</head>
+<body>
+
+  <% if (isAdmin) { %>
+    <%- include('nav_admin.html', {user: 사용자}) %>
+  <% } else { %>
+    <%- include('nav_user.html', {user: 사용자})  %>
+  <% } %>
+
+  <br><br>
+  <div class="container-flex">
+    <div id="map-container">
+      <div id="map"></div>
+
+      <fieldset>
+        <% if (isAdmin) { %>
+          <legend><mark style="background-color: skyblue; color: red;">관리자 전용</mark> <mark>센서 데이터 현황</mark></legend>
+        <% } else { %>
+          <legend><mark>센서 데이터 현황</mark></legend>
+        <% } %>
+
+        <% if (isAdmin) { %>
+          <div class="controls">
+            <button id="toggle-button" class="btn btn-primary btn-toggle">물 수위 현황</button>
+            <button id="toggle-button1" class="btn btn-danger btn-toggle">일산화 탄소 감지 현황</button>
+            <button id="toggle-button2" class="btn btn-warning btn-toggle">불꽃 감지 현황</button>
+            <button id="toggle-button3" class="btn btn-success btn-toggle">습도 현황</button>
+            <button id="toggle-button4" class="btn btn-info btn-toggle">온도 현황</button>
+          </div>
+        <% } else { %>
+          <div class="controls">
+            <button id="toggle-button1" class="btn btn-danger btn-toggle">일산화 탄소 감지 현황</button>
+            <button id="toggle-button2" class="btn btn-warning btn-toggle">불꽃 감지 현황</button>
+            <button id="toggle-button3" class="btn btn-success btn-toggle">습도 현황</button>
+            <button id="toggle-button4" class="btn btn-info btn-toggle">온도 현황</button>
+          </div>
+        <% } %>
+      </fieldset>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-6 m-auto">
+              <h4 class="container mt-4"><mark><strong>글 작성페이지</strong></mark></h4>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-10 m-auto"> <!-- col-md-6에서 col-md-10으로 수정 -->
+              <div class="card card-body" style="min-height: 600px; position: relative;"> <!-- min-height 및 position 추가 -->
+        
+                <form action="/add" method="POST">
+                  <br>
+                  <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                    <strong style="color: blue;"><label style="width: 100px;">작성자 : </label></strong>
+                    <input type="text" class="form-control" value="<%= 사용자.id %> (<%= isAdmin ? '관리자' : '사용자' %>)" disabled>
+                    <input type="hidden" name="name" value="<%= 사용자.id %>">
+                  </div>
+                  
+                  <br><br>
+                  <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                    <strong style="color: blue;"><label style="width: 100px;">제목 : </label></strong>
+                    <input type="text" class="form-control" name="title">
+                  </div>
+                  <br><br>
+                  <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                    <strong style="color: blue;"><label style="width: 100px;">작성 일자 : </label></strong>
+                    <input type="text" class="form-control" name="date">
+                  </div>
+                  <br><br>
+                  <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                    <strong style="color: blue;"><label style="width: 100px;">내용 : </label></strong>
+                    <textarea type="text" class="form-control" maxLength="1200" name="content"></textarea>
+                  </div>
+                  <br><hr>
+                  <button type="submit" class="btn btn-warning" style="margin-top: 10px; color: white">작성</button>
+                </form>
+        
+              </div>
+              
+            </div>
+
+          </div>
+          
+        </div>
+              
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p><strong>COPYRIGHT &copy; 산림청 SINCE1967. ALL RIGHTS RESERVED.</strong></p>
+        <p style="color: blue;">팀명&nbsp;: &nbsp; 파이리 &nbsp; &nbsp; &nbsp; 대표자&nbsp;: &nbsp; 이준희  &nbsp; &nbsp; &nbsp; &#9742; &nbsp;:&nbsp; 010-3497-2870</p>  
+      </div>
+    </footer>
+  
+    <!-- Modal Structure -->
+  <div class="modal fade" id="sensorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sensor Data</h5>
+          <button type="button" class="close custom-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <strong>System 1:</strong>
+          <iframe id="modal-iframe-1" width="100%" height="450" frameborder="0"></iframe>
+          <strong>System 2:</strong>
+          <iframe id="modal-iframe-2" width="100%" height="450" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+      $('#search').click(function(){
+        var 입력한값 = $('#search-input').val();
+        window.location.replace('/search?value=' + 입력한값)
+      });
+      
+      $('.chat').click(function(e){
+        var _id = e.target.dataset.id;
+        var title = e.target.dataset.title;
+        $.post('/chatroom', { 당한사람id : _id, 제목 : title })
+        .then(()=>{
+          console.log('채팅방 게시물 생성완료')
+        })
+        window.location.replace('/chat')
+      });
+
+      $('#toggle-button').click(function() {
+      $('#modal-iframe-1').attr('src', '');       // ThingSpeak (그래프) url 삽입 부분
+      $('#modal-iframe-2').attr('src', '');
+      $('#sensorModal').modal('show');
+});
+
+    $('#toggle-button1').click(function() {
+      $('#modal-iframe-1').attr('src', '');
+      $('#modal-iframe-2').attr('src', '');
+      $('#sensorModal').modal('show');
+});
+
+
+    $('#toggle-button2').click(function() {
+      $('#modal-iframe-1').attr('src', '');
+      $('#modal-iframe-2').attr('src', '');
+      $('#sensorModal').modal('show');
+    });
+
+    $('#toggle-button3').click(function() {
+      $('#modal-iframe-1').attr('src', '');
+      $('#modal-iframe-2').attr('src', '');
+      $('#sensorModal').modal('show');
+    });
+
+    $('#toggle-button4').click(function() {
+      $('#modal-iframe-1').attr('src', '');
+      $('#modal-iframe-2').attr('src', '');
+      $('#sensorModal').modal('show');
+    });
+
+    </script>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78a6af8dfa1a5684791a6ec6d8336bbd"></script>
+
+    <script>
+          var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+          mapOption = { 
+              center: new kakao.maps.LatLng(37.5817, 127.0092), // 지도의 중심좌표
+              level: 3 // 지도의 확대 레벨
+          };
+  
+      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+  
+      // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+      var mapTypeControl = new kakao.maps.MapTypeControl();
+  
+      // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+      // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+  
+      // 지도 확대 축소를 제어할 수 있는 줌 컨트롤을 생성합니다
+      var zoomControl = new kakao.maps.ZoomControl();
+      map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+    function loadAndDisplayJSONData() {
+      var urls = [
+        "",           // Firebase (json) url 삽입 부분
+        ""
+      ];
+
+      urls.forEach(function(url) {
+        $.getJSON(url, function(data) {
+          // 각 시스템의 데이터를 처리합니다.
+          Object.keys(data).forEach(function(systemKey) {
+            var systemData = data[systemKey];
+            var lat = systemData.ex_LAT;
+            var lon = systemData.ex_LON;
+            var systemName = systemKey;  // 시스템 이름을 키로부터 가져옴
+            var pumpState = systemData.pump_State;
+            var gasState = systemData.gas_State;
+            var flameState = systemData.flame_State;
+            var temperature = systemData.temperature;
+            var humidity = systemData.humidity;
+
+            // 위도, 경도를 사용하여 마커 생성
+            var markerPosition = new kakao.maps.LatLng(lat, lon);
+            var markerImageSrc = pumpState == 1 ? '/public/image/red-icon.png' : '/public/image/default-icon.png'; // 마커 이미지 경로
+            var markerImageSize = new kakao.maps.Size(64, 64); // 마커 이미지 크기
+            var markerImageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커 이미지 옵션
+            var markerImage = new kakao.maps.MarkerImage(markerImageSrc, markerImageSize, markerImageOption);
+
+            var marker = new kakao.maps.Marker({
+              position: markerPosition,
+              image: markerImage // 마커 이미지 설정
+            });
+
+            // 마커를 지도 위에 표시
+            marker.setMap(map);
+
+            // 정보창 생성 및 표시
+            var iwContent = '<div style="padding:10px; font-size: 18px; font-weight: bold; color: #333; background-color: #fff; border: 2px solid #ddd; border-radius: 10px; width: 600px; text-align: center;">' +
+              '<strong>' + '['+ systemName + ']' + '</strong><br><br>' +
+              '<strong>위도&nbsp;:&nbsp;</strong> ' + lat + ',&nbsp;&nbsp;&nbsp;' +
+              '<strong>경도&nbsp;:&nbsp;</strong> ' + lon + '<br><br>' +
+              '<span style="color: red;">Pump State &nbsp;:&nbsp;' + pumpState + '</span>' + '<br><br>' +
+              '<span style="color: #CCCC00;">Gas State &nbsp;:&nbsp;</span> ' + gasState + '<br><br>' +
+              '<span style="color: orange;">Flame State &nbsp;:&nbsp;</span> ' + flameState + '<br><br>' +
+              '<span style="color: blue;">Temperature &nbsp;:&nbsp;</span> ' + temperature + '°C<br><br>' +
+              '<span style="color: green;">Humidity &nbsp;:&nbsp;</span> ' + humidity + '%<br><br>' +
+              '</div>';
+
+            var iwPosition = new kakao.maps.LatLng(lat, lon);
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+              position: iwPosition,
+              content: iwContent
+            });
+
+            // 마커에 마우스오버 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'mouseover', function() {
+              // 인포윈도우의 위치를 마커의 오른쪽으로 설정
+              infowindow.setPosition(new kakao.maps.LatLng(lat, lon + 0.001));
+              // 마커 위에 인포윈도우를 표시합니다
+              infowindow.open(map, marker);
+            });
+
+            // 마커에 마우스아웃 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'mouseout', function() {
+              // 마커 위에 인포윈도우를 닫습니다
+              infowindow.close();
+            });
+          });
+        }).fail(function() {
+          console.log("Error: Could not load data from " + url);
+        });
+      });
+    }
+  
+    // 페이지 로드 시 데이터 로드 실행
+    $(document).ready(function() {
+      loadAndDisplayJSONData();
+    });  
+  </script>
+  
+
+</body>
+</html>

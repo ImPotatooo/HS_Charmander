@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <title>My Editor</title>
+  <style>
+    .button-container {
+      text-align: center;
+      margin-top: 10px; /* margin-top 값을 줄여서 폼과 버튼 사이의 간격을 줄임 */
+      position: relative; /* relative로 위치를 조정 */
+      top: 20px; /* 필요한 만큼 위로 이동 */
+    }
+    fieldset {
+      border: 2px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+      height: 500px;
+    }
+
+    .container-slide, .slider-container, .slider, .card, .register-container, form {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .container-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 2.5%;
+    }
+
+    .footer {
+      background-color: lightgray;
+      padding: 20px 0;
+      text-align: center;
+      border-top: 1px solid #e7e7e7;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      margin-top: 50px;
+    }
+
+    .pos-center {
+      text-align: center;
+    }
+
+    .pos-center button {
+      width: 150px;
+      border-radius: 10px;
+      position: relative;
+      bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .container-slide {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .slider-container {
+      width: 100%;
+    }
+
+    .register-container {
+      width: 100%;
+      height: 600px;
+      margin-top: 20px;
+    }
+
+    .slider {
+      width: 100%;
+      height: calc(600px / 3);
+      overflow: hidden;
+      border: 2px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+
+    .slides img {
+      min-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .slider button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.7);
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .slider button.prev {
+      left: 10px;
+    }
+
+    .slider button.next {
+      right: 10px;
+    }
+
+    .card {
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 2px solid #ddd;
+      margin-top: 20px;
+    }
+
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .content {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+    
+  <% if (isAdmin) { %>
+    <%- include('nav_admin.html', { user: 사용자 }) %>
+  <% } else { %>
+    <%- include('nav_user.html', { user: 사용자 }) %>
+  <% } %>
+  
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-6 m-auto">
+        <p><mark style="color: orange;"><%= 사용자.id %></mark> &nbsp;님의 <strong>정보 수정 페이지</strong> 입니다.</p>
+      </div>
+    </div>
+  </div> 
+  <hr>
+  <br><br>
+  <div class="container">
+    <div class="row mt-5">
+      
+      <div class="content">
+        <div class="container-slide">
+
+          <div class="slider-container">
+            <div class="slider">
+              <div class="slides">
+                <img src="/public/image/image1.jpg" alt="Image 1">
+                <img src="/public/image/image2.jpg" alt="Image 2">
+                <img src="/public/image/image3.jpg" alt="Image 3">
+                <img src="/public/image/image4.jpg" alt="Image 4">
+                <img src="/public/image/image5.jpg" alt="Image 5">
+                <img src="/public/image/image6.jpg" alt="Image 6">
+                <img src="/public/image/image7.jpg" alt="Image 7">
+                <img src="/public/image/image8.jpg" alt="Image 8">
+              </div>
+              <button class="prev">&#10094;</button>
+              <button class="next">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="register-container">
+            <form action="/myedit?_method=PUT" method="POST">
+              <fieldset>
+                <h5><strong>수정할 정보를 입력하시기 바랍니다.</strong></h5>
+                <br><br>
+                <div class="form-group">
+                  <strong><label>아이디</label></strong>
+                  <input type="text" class="form-control" name="id" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <strong><label>이메일</label></strong>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <strong><label>비밀번호</label></strong>
+                  <input type="password" class="form-control" name="pw" required>
+                </div>
+              </fieldset>
+              <div class="button-container">
+                <button type="submit" class="btn btn-success">정보 수정</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>COPYRIGHT &copy; 산림청 SINCE1967. ALL RIGHTS RESERVED.</strong></p>
+      <p style="color: blue;">팀명&nbsp;: &nbsp; 파이리 &nbsp; &nbsp; &nbsp; 대표자&nbsp;: &nbsp; 이준희  &nbsp; &nbsp; &nbsp; &#9742; &nbsp;:&nbsp; 010-3497-2870</p>  
+    </div>
+  </footer>
+
+  <script>
+    let currentIndex = 0;
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const totalImages = images.length;
+
+    function showImage(index) {
+      const offset = -index * 100;
+      slides.style.transform = `translateX(${offset}%)`;
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % totalImages;
+      showImage(currentIndex);
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      showImage(currentIndex);
+    }
+
+    document.querySelector('.next').addEventListener('click', showNextImage);
+    document.querySelector('.prev').addEventListener('click', showPrevImage);
+
+    setInterval(showNextImage, 3000); // 3초마다 다음 이미지로 이동
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
