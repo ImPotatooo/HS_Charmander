@@ -6,7 +6,9 @@
  웹 부문 장려상<br>
 
  **아두이노 시스템을 통한 효율적인 실시간 대규모 산불 감지 웹 서비스**
-[상장 이미지]
+
+![캡스톤 상장](https://github.com/ImPotatooo/HS_Charmander/assets/145684303/827abfe9-a9f1-4c93-bd03-1a320f69d18a)
+
 </div>
 
 ## 목차
@@ -20,7 +22,9 @@
 
 ## 팀원 소개 및 역할
 
-[팀원 이미지]
+![지도교수사진](https://github.com/ImPotatooo/HS_Charmander/assets/145684303/f0b36e17-b475-4e5c-84d6-46160fd40e67)
+
+* 지도교수 : 이석기 교수님
 
 * 이준희(팀장)_1971362 - 이메일: godjunhee7@naver.com 
 <br> 역할 : 데이터 로직, DB구축, 서버 구현
@@ -47,8 +51,10 @@
 
 * 개발 언어 : Java, C++
 * 개발 도구 : VSCode, Arduino, Firebase, ThingSpeak
-* 주요 기술 : Express, MongoDB, NodeJS, LoRa Communication 
-[구조도 이미지]
+* 주요 기술 : Express, MongoDB, NodeJS, LoRa Communication
+
+
+<img width="298" alt="구조도" src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/73202da8-b819-488e-a185-70d40a37d6f5">
 
 ## 기대 효과
 
