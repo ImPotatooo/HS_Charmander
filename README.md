@@ -8,7 +8,7 @@
  **아두이노 시스템을 통한 효율적인 실시간 대규모 산불 감지 웹 서비스**
 
 
-<img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/827abfe9-a9f1-4c93-bd03-1a320f69d18a" width="500" height="600"/>
+<img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/827abfe9-a9f1-4c93-bd03-1a320f69d18a" width="550" height="700"/>
 
 
 </div>
