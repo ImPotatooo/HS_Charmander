@@ -1,14 +1,12 @@
 <div align="center">
 
-# HansungUniv. Charmander
+# 파이리팀
 2024_Hansung_CapstoneDesign
 
  웹 부문 장려상<br>
 
  **아두이노 시스템을 통한 효율적인 실시간 대규모 산불 감지 웹 서비스**
 
-
-<img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/827abfe9-a9f1-4c93-bd03-1a320f69d18a" width="550" height="700"/>
 
 
 </div>
@@ -69,6 +67,19 @@
   
   아두이노를 사용하여 실시간 데이터 수집 및 송수신을 하기 때문에 비용이 크게 절감되고 유지보수가 용이해진다.  
 
+## 시연 화면
+
+<details><summary>
+</summary>
+
+![웹페이지_1](https://github.com/ImPotatooo/HS_Charmander/assets/145684303/1145bfa4-dd8f-4dcf-859c-2286c1775d29)
+
+![웹페이지_2](https://github.com/ImPotatooo/HS_Charmander/assets/145684303/a06eedf2-68ec-424e-9276-3611e9189ae5)
+
+![웹페이지_3](https://github.com/ImPotatooo/HS_Charmander/assets/145684303/d4763b14-5daa-4ef6-b83a-b436c593cf44)
+
+</details>
+
 ## 시연 동영상
 
 Youtube URL : https://www.youtube.com/watch?v=b58zsBc50iQ
@@ -78,3 +89,9 @@ Youtube URL : https://www.youtube.com/watch?v=b58zsBc50iQ
 1. 웹 개발 시, Angular 프레임워크를 사용하여 MEAN stack 적용
 2. 아두이노 시스템에 화재 연기 감지를 위한 카메라 추가
 3. 수집된 센싱값을 가공하여 화재 가능성 안전, 경고, 위험 단계로 제공
+
+## 상장
+
+
+<img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/827abfe9-a9f1-4c93-bd03-1a320f69d18a" width="550" height="700"/>
+
