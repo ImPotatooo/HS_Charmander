@@ -90,7 +90,7 @@ Youtube URL : https://www.youtube.com/watch?v=b58zsBc50iQ
 2. 아두이노 시스템에 화재 연기 감지를 위한 카메라 추가
 3. 수집된 센싱값을 가공하여 화재 가능성 안전, 경고, 위험 단계로 제공
 
-## 상장
+## 🥇 상장
 
 
 <img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/827abfe9-a9f1-4c93-bd03-1a320f69d18a" width="550" height="700"/>
