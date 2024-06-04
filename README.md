@@ -26,8 +26,6 @@
 
 <img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/f0b36e17-b475-4e5c-84d6-46160fd40e67" width="800" height="600"/>
 
-![지도교수사진](https://github.com/ImPotatooo/HS_Charmander/assets/145684303/f0b36e17-b475-4e5c-84d6-46160fd40e67)
-
 * 지도교수 : 이석기 교수님
 
 * 이준희(팀장)_1971362 - 이메일: godjunhee7@naver.com 
@@ -58,7 +56,7 @@
 * 주요 기술 : Express, MongoDB, NodeJS, LoRa Communication
 
 
-<img width="298" alt="구조도" src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/73202da8-b819-488e-a185-70d40a37d6f5">
+<img width="700" height="600" alt="구조도" src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/73202da8-b819-488e-a185-70d40a37d6f5">
 
 ## 기대 효과
 
