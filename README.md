@@ -89,7 +89,7 @@ Youtube URL : https://www.youtube.com/watch?v=b58zsBc50iQ
 
 ## 희망 Develop 사항
 
-1. 웹 개발 시, Angular 프레임워크를 사용하여 MEAN stack 적용
+1. 웹 개발 시, Angular or React 프레임워크를 사용하여 MEAN stack 또는 MERN stack 적용
 2. 아두이노 시스템에 화재 연기 감지를 위한 카메라 추가
 3. 수집된 센싱값을 가공하여 화재 가능성 안전, 경고, 위험 단계로 제공
 
