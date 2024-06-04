@@ -1,5 +1,5 @@
 <div align="center">
-
+<img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/fdbb1dfd-33d6-496b-b176-c3a0ef1f0b3d" width="400" height="500"/>
 ![파이리](https://github.com/ImPotatooo/HS_Charmander/assets/145684303/fdbb1dfd-33d6-496b-b176-c3a0ef1f0b3d)
 
 
