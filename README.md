@@ -30,7 +30,7 @@
 * 지도교수 : 이석기 교수님
 
 * 이준희(팀장)_1971362 - 이메일: godjunhee7@naver.com 
-<br> 역할 : 데이터 로직, DB구축, 서버 구현
+<br> 역할 : 데이터 로직, DB구축, 서버 구현 [코드] (https://github.com/ImPotatooo/HS_Charmander/tree/NodeJS_Web)
 
 * 이동욱_1971455 이메일: 1971455@hansung.ac.kr
 <br> 역할 : Arduino 시스템 구축, ThingSpeak API 연동 
