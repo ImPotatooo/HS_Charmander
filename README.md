@@ -30,15 +30,15 @@
 * 지도교수 : 이석기 교수님
 
 * 이준희(팀장)_1971362 - 이메일: godjunhee7@naver.com 
-<br> 역할 : 데이터 로직, DB구축, 서버 구현 [코드] (https://github.com/ImPotatooo/HS_Charmander/tree/NodeJS_Web)
+<br> 역할 : 데이터 로직, DB구축, 서버 구현 [웹 코드](https://github.com/ImPotatooo/HS_Charmander/tree/NodeJS_Web)
 
 * 이동욱_1971455 이메일: 1971455@hansung.ac.kr
-<br> 역할 : Arduino 시스템 구축, ThingSpeak API 연동 
+<br> 역할 : Arduino 시스템 구축, ThingSpeak API 연동 [아두이노 코드](https://github.com/ImPotatooo/HS_Charmander/tree/Arduino_System1)
 
 * 권용우_1971325 이메일: kyw4551@hansung.ac.kr
-<br> 역할 : Arduino 시스템 구축, FireBase API 연동 
+<br> 역할 : Arduino 시스템 구축, FireBase API 연동 [아두이노 코드](https://github.com/ImPotatooo/HS_Charmander/tree/Arduino_System2)
 
-* 김재민_1971442 이메일: jj0143206jjj@naver.com
+* 김재민_1971442 이메일: jj0143206jjj@naver.com [웹 코드](https://github.com/ImPotatooo/HS_Charmander/tree/NodeJS_Web)
 <br> 역할 : UX/UI 구현
 
 
