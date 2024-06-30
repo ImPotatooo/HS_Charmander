@@ -52,9 +52,9 @@
 
 ## 프로젝트 구조 및 주요 적용 기술
 
-* 개발 언어 : Java, C++
+* 개발 언어 : JavaScript, C++
 * 개발 도구 : VSCode, Arduino, Firebase, ThingSpeak
-* 주요 기술 : Express, MongoDB, NodeJS, LoRa Communication
+* 주요 기술 : NodeJS, Express, MongoDB Atlas, LoRa Communication
 
 
 <img width="700" height="400" alt="구조도" src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/73202da8-b819-488e-a185-70d40a37d6f5">
