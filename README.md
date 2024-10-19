@@ -25,7 +25,6 @@
 
 ## 팀원 소개 및 역할
 
-<img src="https://github.com/ImPotatooo/HS_Charmander/assets/145684303/f0b36e17-b475-4e5c-84d6-46160fd40e67" width="800" height="600"/>
 
 * 지도교수 : 이석기 교수님
 
